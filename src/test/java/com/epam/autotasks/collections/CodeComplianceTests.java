@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CodeComplianceTests {
 
     @Test
-    void testMedianQueueAncestor() {
+    void testAncestor() {
         assertEquals(AbstractSet.class, RangedOpsIntegerSet.class.getSuperclass());
     }
 }
