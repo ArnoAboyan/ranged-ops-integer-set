@@ -9,30 +9,78 @@ Estimated workload of this exercise is _60 min_.
 Please, proceed to [RangedOpsIntegerSet](src/main/java/com/epam/autotasks/collections/RangedOpsIntegerSet.java)
 and implement its methods.
 
+RangedOpsIntegerSet is a Set of Integer. It has two additional methods:
 
+- `boolean add(int fromInclusive, int toExclusive)`
+- `boolean remove(int fromInclusive, int toExclusive)`
 
-A median queue must return its median element.\
-Median here is an element than is less than 50% of the items in the queue and more than 50% of the items in the queue.
-Median represents middle value of the collection.    
-For instance, if you put `1, 2, 3, 4, 5` to the queue and then pull an element of it, queue will return `3`.\
-If there is even amount of elements, there are two possible values to return. Return a lower one.\
+These methods are for adding/removing ranges of values.
 
 You need to implement following methods:
 
-- offer - pushes an element to a queue
-- poll - pulls an element out of the queue
-- peek - get the first element on the top of the queue (just gets, without pulling it out)
-- iterator - iterates over elements of a queue (no need to keep order)
-- size - just presents the number of current queue elements
+- add (*single-value*) - adds a single value into the set
+- remove (*single-value*) - removes a single value from the set
+- add (*ranged*) - adds a range of values into the set (first argument - inclusive, last argument - exclusive).
+  Return `true` if any of range values were actually added.
+- remove(*ranged*)- removes a range of values from the list (first argument - inclusive, last argument - exclusive).
+  Return `true` if any of range values were actually removed.
+- iterator - iterates over elements of the set in natural order.
+- size - returns the number of current queue elements
 
-You must not use arrays, Lists or Sets in your implementation.
+### Examples
 
-### Examples:
+```java
+RangedOpsIntegerSet set = new RangedOpsIntegerSet();
+set.add(1, 5);
+for(Integer el : set){
+    System.out.println(el);
+}
+```
 
-- `1, 10, 100` &rightarrow; `10`
-- `100, 10, 1` &rightarrow; `10`
-- `100, 1, 10` &rightarrow; `10`
-- `1, 987, 2` &rightarrow; `2`
-- `1, 987, 2, 3` &rightarrow; `2`
-- `1, 987, 4, 2, 3` &rightarrow; `3`
-- `1, 2, 3, 3, 3` &rightarrow; `3`
+```
+1
+2
+3
+4
+```
+
+---
+
+```java
+RangedOpsIntegerSet set = new RangedOpsIntegerSet();
+set.add(1, 5);
+set.add(9, 11);
+for(Integer el : set){
+    System.out.println(el);
+}
+```
+
+```
+1
+2
+3
+4
+9
+10
+```
+
+---
+
+```java
+RangedOpsIntegerSet set = new RangedOpsIntegerSet();
+set.add(1, 15);
+set.remove(3, 12);
+for(Integer el : set){
+    System.out.println(el);
+}
+```
+
+```
+1
+2
+12
+13
+14
+```
+
+---
